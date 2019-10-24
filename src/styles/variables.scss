@@ -1,0 +1,12 @@
+
+ $body-background: black;
+ $body-margin: 20px;
+
+ // Vuetify
+@import '~vuetify/src/styles/styles.sass';
+$border-radius-root: 80px;
+$font-size-root: 60px;
+
+@import '~vuetify/src/components/VBtn/_variables.scss';
+$btn-font-sizes: map-merge($btn-font-sizes, ( default: 0.75rem ));
+$btn-sizes: map-merge($btn-sizes, ( default: 150 ));
