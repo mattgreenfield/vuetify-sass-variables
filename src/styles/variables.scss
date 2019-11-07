@@ -1,12 +1,115 @@
 
- $body-background: black;
- $body-margin: 20px;
+//
+// Sass Variables
+// =====================
+//
+// This file is imported mutlitple times in the same app, please ensure it doesn't output any CSS
+// else you'll get duplicate CSS
 
- // Vuetify
+//
+// Colours
+// ===========================
+
+$primary: green;
+$secondary: green;
+$accent: green;
+$info_darken2: green;
+$success: green;
+$info_lighten2: green;
+$info_lighten4: green;
+$success_lighten3: green;
+$success_darken4: green;
+$error_lighten4: green;
+$error_darken2: green;
+$error_darken4: green;
+$error_lighten2: green;
+$warning_darken3: green;
+$error: green;
+$neutral_darken4: green;
+$neutral_darken3: green;
+$neutral_darken2: green;
+$neutral_darken1: green;
+$neutral: green;
+$neutral_lighten1: green;
+$neutral_lighten2: green;
+$neutral_lighten3: green;
+$neutral_lighten4: green;
+$neutral_lighten5: green;
+
+
+$app-background-color: $neutral_lighten3;
+$body-background: $app-background-color;
+$app-sidebar-color: $neutral_darken3;
+$body-margin: 20px;
+
+//
+// Vuetfiy
+// ===========================
+
+// Base Vars
+// @see node_modules/vuetify/src/styles/settings/_variables.scss
+$body-font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
+// Required for modifying core defaults
 @import '~vuetify/src/styles/styles.sass';
-$border-radius-root: 80px;
-$font-size-root: 60px;
 
+// Theme Colours
+@import '~vuetify/src/styles/settings/_light.scss';
+@import '~vuetify/src/styles/settings/_dark.scss';
+
+$material-light: map-merge($material-light, ( 'background': $app-background-color ));
+$material-dark: map-merge($material-dark, ( 'cards': $app-sidebar-color ));
+
+// Buttons
 @import '~vuetify/src/components/VBtn/_variables.scss';
 $btn-font-sizes: map-merge($btn-font-sizes, ( default: 0.75rem ));
-$btn-sizes: map-merge($btn-sizes, ( default: 150 ));
+
+// Alerts
+@import '~vuetify/src/components/VAlert/_variables.scss';
+$alert-font-size: 14px;
+
+// Button Toggle - button groups
+@import '~vuetify/src/components/VBtnToggle/_variables.scss';
+$btn-toggle-border-radius: 8px;
+$btn-toggle-btn-height: 38px;
+
+//
+// Other
+// ===========================
+
+//
+// Leaflet JS
+$leaflet_z-index: 400; // Use this to ensure your items are higher/lower than the leaflet map
+
+//
+// Deprecated
+$layout_1: #282828;
+$layout_2: #2E2E2E;
+$layout_3: #747474;
+$layout_4: #DEDDDF;
+$layout_5: #EEECF0;
+$layout_6: #fafafa;
+$layout_7: #3E3E3E;
+$layout_8: #4C4C4C;
+$layout_9: #A8A6A6;
+$layout_10: #C8C8C8;
+
+//
+// Breakpoint Mixin.
+// ============================================================
+// Use to create media queries based on vuetify breakpoints
+// Usage:
+// @include breakpoint('sm-and-down') {
+//   align-items: flex-start;
+// }
+@mixin breakpoint($value) {
+  $str: if(map-has-key($display-breakpoints, $value), map-get($display-breakpoints, $value), '');
+
+  @if not $str or $str == '' {
+    @error "Invalid breakpoint name: `#{$value}`.";
+  } @else {
+    @media #{$str} {
+      @content;
+    }
+  }
+}

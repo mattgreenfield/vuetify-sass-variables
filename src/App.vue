@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <v-app>
-      <v-btn color="primary">Hello</v-btn>
+      <Hello />
     </v-app>
   </div>
 </template>
 
 <script>
-
+import Hello from '@/components/HelloWorld.vue'
 export default {
   name: 'app',
-  components: {}
+  components: {
+    Hello,
+  }
 }
 </script>
 
